@@ -6,21 +6,28 @@ app.use(
     extended: true,
   })
 );
-
+app.set("view engine", "ejs");
 app.listen(3000, function () {
   console.log("Ahmad Software server running!");
 });
 
-app.use("view engine", "ejs");
+let todo = [];
 
 app.get("/", function (req, res) {
-  res.write("Hello\t");
   let today = new Date();
 
-  if (today.getDay() === 6 || today.getDay() === 0) {
-    res.write("Yay it's the weekend");
-  } else {
-    res.write("Boo! I have to work!");
-  }
-  res.send();
+  let options = {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+  };
+
+  let day = today.toLocaleDateString("en-US", options);
+  res.render("list", { kindOfDay: day, newListItem: todo });
+});
+
+app.post("/", function (req, res) {
+  item = req.body.todo;
+  todo.push(item);
+  res.redirect("/");
 });
