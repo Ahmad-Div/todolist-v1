@@ -1,36 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include ("header") -%>
+    <section class="todo-list">
+        <div class="allbox">
+            <div class="top-todo">
+                <h1 class="todo-header">
+                    <%=listTitle %>
+                </h1>
+            </div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To Do List</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+            <div class="todo-body">
+                <ul>
+                    <% for( let i=0; i < newListItem.length; i++ ) { %>
+                        <div class="list-item">
+                            <input class="check" type="checkbox" name="" id="">
+                            <p class="list-text">
+                                <%=newListItem[i]%>
+                            </p>
+                        </div>
+                        <% } %>
+                </ul>
+                <div class="input-new">
+                    <form action="/" method="post">
+                        <input type="text" class="input-new-item" name="todo" id="" placeholder="New Item"
+                            autocomplete="off">
+                        <button class="submit-button" name="list" value=<%=value%> type="submit"><i
+                                class="fa-solid fa-plus"></i></button>
+                    </form>
+                </div>
 
-<body>
+            </div>
+        </div>
 
+    </section>
 
-    <h1>
-        <%=kindOfDay %>
-    </h1>
-
-    <ul>
-        <% for( let i=0; i < newListItem.length; i++ ) { %>
-            <li>
-                <%=newListItem[i]%>
-            </li>
-            <% } %>
-    </ul>
-
-    <form action="/" method="post">
-        <input type="text" name="todo">
-        <button type="submit">Submit</button>
-    </form>
-
-
-
-</body>
-
-</html>
+    <%-include ("footer") -%>
