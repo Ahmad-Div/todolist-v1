@@ -105,7 +105,15 @@ body {
   text-decoration: line-through;
 }
 
-.input-new form {
+form.todo-form {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: left;
+  gap: 1rem;
+  width: 100%;
+}
+
+form.input-new-form {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;

@@ -9,17 +9,22 @@
 
             <div class="todo-body">
                 <ul>
-                    <% for( let i=0; i < newListItem.length; i++ ) { %>
-                        <div class="list-item">
-                            <input class="check" type="checkbox" name="" id="">
-                            <p class="list-text">
-                                <%=newListItem[i]%>
-                            </p>
-                        </div>
-                        <% } %>
+                    <% newListItem.forEach(item=>{ %>
+                        <form action="/delete" method="post" class="todo-form">
+                            <div class="list-item">
+                                <input class="check" type="checkbox" value="<%=item._id %>"
+                                    onChange="this.form.submit()" name="checkbox">
+                                <p class="list-text">
+                                    <%=item.name%>
+                                </p>
+                            </div>
+                            <input type="hidden" name="listName" value="<%= listTitle %> ">
+                        </form>
+
+                        <% }) %>
                 </ul>
                 <div class="input-new">
-                    <form action="/" method="post">
+                    <form class="input-new-form" action="/" method="post">
                         <input type="text" class="input-new-item" name="todo" id="" placeholder="New Item"
                             autocomplete="off">
                         <button class="submit-button" name="list" value=<%=value%> type="submit"><i
